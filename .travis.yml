@@ -1,0 +1,10 @@
+sudo: required
+
+addons:
+  apt:
+    packages:
+      - docker.io
+
+script:
+  - sudo docker build -t frederickzh/mingw:rust-nightly .
+  - sudo docker run -it frederickzh/mingw:rust-nightly "/apps/rust-test.sh"
