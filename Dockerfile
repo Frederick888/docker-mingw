@@ -4,6 +4,8 @@ RUN apt-get update
 RUN apt-get -y dist-upgrade
 RUN apt-get -y install curl unzip autoconf build-essential pkg-config cmake mingw-w64
 
+ADD . /apps
+
 # ZLIB
 WORKDIR /builds
 RUN curl -O -J http://www.zlib.net/zlib-1.2.11.tar.gz
