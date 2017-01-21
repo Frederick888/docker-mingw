@@ -19,7 +19,3 @@ There is also a `rust-test.sh` script in this branch for CI testing.
 ## rust-stable
 
 Same as rust-nightly, but with Rust stable toolchain.
-
-## master
-
-Binaries only.
