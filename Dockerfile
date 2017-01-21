@@ -2,7 +2,7 @@ FROM debian:jessie
 
 RUN apt-get update
 RUN apt-get -y dist-upgrade
-RUN apt-get -y install curl unzip autoconf build-essential pkg-config mingw-w64
+RUN apt-get -y install curl unzip autoconf build-essential pkg-config cmake mingw-w64
 
 # ZLIB
 WORKDIR /builds
@@ -28,6 +28,14 @@ WORKDIR /builds/sqlite-autoconf-3160200
 RUN ./configure --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32
 RUN make && make install
 
+# LIBSSH2
+WORKDIR /builds
+RUN curl -O -J https://www.libssh2.org/download/libssh2-1.8.0.tar.gz
+RUN tar xf libssh2-1.8.0.tar.gz
+WORKDIR /builds/libssh2-1.8.0
+RUN LIBS="-lgdi32 -lcrypt32" ./configure --with-openssl --with-libz --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32
+RUN make && make install
+
 # RUST STABLE
 WORKDIR /builds
 RUN curl https://sh.rustup.rs -o rust-init
@@ -35,4 +43,3 @@ RUN chmod +x rust-init
 RUN ./rust-init -y --default-toolchain nightly
 RUN ln -s $HOME/.cargo/bin/* /usr/local/bin/
 RUN rustup target add x86_64-pc-windows-gnu
-
