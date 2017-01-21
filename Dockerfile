@@ -28,3 +28,11 @@ WORKDIR /builds/sqlite-autoconf-3160200
 RUN ./configure --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32
 RUN make && make install
 
+# RUST STABLE
+WORKDIR /builds
+RUN curl https://sh.rustup.rs -o rust-init
+RUN chmod +x rust-init
+RUN ./rust-init -y
+RUN ln -s $HOME/.cargo/bin/* /usr/local/bin/
+RUN rustup target add x86_64-pc-windows-gnu
+
