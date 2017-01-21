@@ -10,3 +10,16 @@ apt-get -y install docker-engine
 
 cargo install cargo-clone
 
+rust_test_template() {
+    cd /apps
+    cargo clone "$1"
+    cd "$1"
+    cargo build --target x86_64-pc-windows-gnu
+}
+
+# WINAPI-BUILD
+rust_test_template winapi-build
+
+# LIBSSH2-SYS
+rust_test_template libssh2-sys
+
