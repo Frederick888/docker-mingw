@@ -1,4 +1,4 @@
-# Introduction
+# Introduction [![Build Status](https://travis-ci.org/Frederick888/docker-mingw.svg?branch=rust-nightly)](https://travis-ci.org/Frederick888/docker-mingw)
 
 Debian with MinGW and some pre-compiled common (static) libraries and toolchains.
 
