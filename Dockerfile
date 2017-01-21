@@ -32,7 +32,7 @@ RUN make && make install
 WORKDIR /builds
 RUN curl https://sh.rustup.rs -o rust-init
 RUN chmod +x rust-init
-RUN ./rust-init -y
+RUN ./rust-init -y --default-toolchain nightly
 RUN ln -s $HOME/.cargo/bin/* /usr/local/bin/
 RUN rustup target add x86_64-pc-windows-gnu
 
