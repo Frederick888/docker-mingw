@@ -38,7 +38,7 @@ WORKDIR /builds/libssh2-1.8.0
 RUN LIBS="-lgdi32 -lcrypt32" ./configure --with-openssl --with-libz --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32
 RUN make && make install
 
-# RUST NIGHTLY (LEAVE ME AT THE END)
+# RUST STABLE (LEAVE ME AT THE END)
 WORKDIR /builds
 RUN curl https://sh.rustup.rs -o rust-init
 RUN chmod +x rust-init
