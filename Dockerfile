@@ -27,15 +27,21 @@ WORKDIR /builds
 RUN curl -O -J http://www.zlib.net/zlib-1.2.11.tar.gz
 RUN tar xf zlib-1.2.11.tar.gz
 WORKDIR /builds/zlib-1.2.11
-RUN CC=x86_64-w64-mingw32-gcc ./configure --prefix=/usr/x86_64-w64-mingw32 --static
-RUN make && make install
+RUN sed -ri "s/SHARED_MODE=0/SHARED_MODE=1/" win32/Makefile.gcc
+RUN sed -ri "s/^PREFIX =/PREFIX = x86_64-w64-mingw32-/" win32/Makefile.gcc
+RUN CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" ./configure --prefix=/usr/x86_64-w64-mingw32 -shared -static
+RUN CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" make -f win32/Makefile.gcc
+RUN INCLUDE_PATH=/usr/x86_64-w64-mingw32/include LIBRARY_PATH=/usr/x86_64-w64-mingw32/lib BINARY_PATH=/usr/x86_64-w64-mingw32/bin make install -f win32/Makefile.gcc
 
 # OPENSSL
 WORKDIR /builds
-RUN curl -O -J https://www.openssl.org/source/openssl-1.1.0c.tar.gz
-RUN tar xf openssl-1.1.0c.tar.gz
-WORKDIR /builds/openssl-1.1.0c
-RUN CROSS_COMPILE="x86_64-w64-mingw32-" ./Configure -DHAVE_STRUCT_TIMESPEC -lz -lws2_32 zlib mingw64 no-shared --prefix=/usr/x86_64-w64-mingw32
+#RUN curl -O -J https://www.openssl.org/source/openssl-1.1.0c.tar.gz
+#RUN tar xf openssl-1.1.0c.tar.gz
+#WORKDIR /builds/openssl-1.1.0c
+RUN curl -O -J https://www.openssl.org/source/openssl-1.0.2j.tar.gz
+RUN tar xf openssl-1.0.2j.tar.gz
+WORKDIR /builds/openssl-1.0.2j
+RUN CROSS_COMPILE="x86_64-w64-mingw32-" ./Configure -DHAVE_STRUCT_TIMESPEC -lz -lws2_32 zlib threads shared no-asm mingw64 --prefix=/usr/x86_64-w64-mingw32
 RUN make depend
 RUN make && make install
 
@@ -52,7 +58,7 @@ WORKDIR /builds
 RUN curl -O -J https://www.libssh2.org/download/libssh2-1.8.0.tar.gz
 RUN tar xf libssh2-1.8.0.tar.gz
 WORKDIR /builds/libssh2-1.8.0
-RUN LIBS="-lgdi32 -lcrypt32" ./configure --with-openssl --with-libz --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32
+RUN LIBS="-lgdi32 -lcrypt32" ./configure --with-openssl --with-libz --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --enable-shared --enable-static
 RUN make && make install
 
 # LIBUNISTRING
