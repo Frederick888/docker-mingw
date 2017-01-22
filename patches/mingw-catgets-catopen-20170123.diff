@@ -1,0 +1,4 @@
+72c72
+< void *mc_realloc( void *ptr, unsigned size )
+---
+> void *mc_realloc( void *ptr, size_t size )
