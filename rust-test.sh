@@ -33,3 +33,6 @@ rust_test_template libz-sys
 # LIBSSH2-SYS
 rust_test_template libssh2-sys
 
+# CURL-SYS
+rust_test_template curl-sys
+
