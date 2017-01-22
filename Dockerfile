@@ -16,9 +16,9 @@ RUN make && make install
 
 # OPENSSL
 WORKDIR /builds
-RUN curl -O -J https://www.openssl.org/source/openssl-1.0.2j.tar.gz
-RUN tar xf openssl-1.0.2j.tar.gz
-WORKDIR /builds/openssl-1.0.2j
+RUN curl -O -J https://www.openssl.org/source/openssl-1.1.0c.tar.gz
+RUN tar xf openssl-1.1.0c.tar.gz
+WORKDIR /builds/openssl-1.1.0c
 RUN CROSS_COMPILE="x86_64-w64-mingw32-" ./Configure -DHAVE_STRUCT_TIMESPEC -lz -lws2_32 zlib mingw64 no-shared --prefix=/usr/x86_64-w64-mingw32
 RUN make && make install
 
