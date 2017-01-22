@@ -110,36 +110,37 @@ RUN make && make install
 
 # CURL
 # to be improved
-#WORKDIR /builds
-#RUN curl -O -J https://curl.haxx.se/download/curl-7.49.1.tar.gz
-#WORKDIR /builds/curl-7.49.1
-#RUN ./configure --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --enable-optimize \
-#        --with-ssl=/usr/x86_64-w64-mingw32 \
-#        --with-gssapi \
-#        --enable-tls-srp \
-#        --with-winidn \
-#        --with-nghttp2 \
-#        --with-libmetalink \
-#        --enable-http \
-#        --enable-ftp \
-#        --enable-file \
-#        --enable-ldap \
-#        --enable-ldaps \
-#        --enable-rtsp \
-#        --enable-proxy \
-#        --enable-dict \
-#        --enable-telnet \
-#        --enable-tftp \
-#        --enable-pop3 \
-#        --enable-imap \
-#        --enable-smb \
-#        --enable-smtp \
-#        --enable-gopher \
-#        --enable-manual \
-#        --enable-ipv6 \
-#        --enable-sspi \
-#        --enable-cookies
-#RUN make && make install
+WORKDIR /builds
+RUN curl -O -J https://curl.haxx.se/download/curl-7.52.1.tar.gz
+RUN tar xf curl-7.52.1.tar.gz
+WORKDIR /builds/curl-7.52.1
+RUN ./configure --prefix=/usr/x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --enable-optimize \
+        --with-ssl=/usr/x86_64-w64-mingw32 \
+        --with-gssapi \
+        --enable-tls-srp \
+        --with-winidn \
+        --with-nghttp2 \
+        --with-libmetalink \
+        --enable-http \
+        --enable-ftp \
+        --enable-file \
+        --enable-ldap \
+        --enable-ldaps \
+        --enable-rtsp \
+        --enable-proxy \
+        --enable-dict \
+        --enable-telnet \
+        --enable-tftp \
+        --enable-pop3 \
+        --enable-imap \
+        --enable-smb \
+        --enable-smtp \
+        --enable-gopher \
+        --enable-manual \
+        --enable-ipv6 \
+        --enable-sspi \
+        --enable-cookies
+RUN make && make install
 
 
 # RUST NIGHTLY (LEAVE ME AT THE END)
