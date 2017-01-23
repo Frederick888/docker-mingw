@@ -108,6 +108,18 @@ RUN make && make install
 #RUN tar xf libpsl-0.17.0.tar.gz
 #WORKDIR /builds/libpsl-0.17.0
 
+# LIBXML2
+WORKDIR /builds
+RUN curl -O -J ftp://xmlsoft.org/libxml2/libxml2-2.9.4.tar.gz
+RUN tar xf libxml2-2.9.4.tar.gz
+WORKDIR /builds/libxml2-2.9.4
+RUN patch -Np0 -i /apps/patches/libxml2/mingw32-libxml2-static-build-compile-fix.patch
+RUN patch -Np1 -i /apps/patches/libxml2/libxml2-no-test.patch
+RUN sed -i "s| doc example | |g" Makefile.am
+RUN autoreconf -vfi
+RUN LIBS="-lz" LDFLAGS="-L/usr/x86_64-w64-mingw32/lib" ./configure --without-python --host=x86_64-w64-mingw32 --prefix=/usr/x86_64-w64-mingw32
+RUN make && make install
+
 # CURL
 # to be improved
 WORKDIR /builds
