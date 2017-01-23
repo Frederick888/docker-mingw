@@ -6,6 +6,8 @@ This Docker image mainly aims to provide pre-compiled binaries for Rust FFI bind
 
 Docker Hub: https://hub.docker.com/r/frederickzh/mingw/
 
+*Quite a lot of scripts are from [AUR](https://aur.archlinux.org)*
+
 # Branches/Tags
 
 ## rust-nightly
