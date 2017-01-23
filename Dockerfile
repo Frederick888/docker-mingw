@@ -71,7 +71,7 @@ RUN rm -rf /builds && mkdir /builds
 
 ADD patches/boost /builds/patches/boost
 ADD scripts/boost_1_63_0.sh /builds/scripts/boost_1_63_0.sh
-RUN /builds/scripts/boost_1_63_0.sh >> /apps/build_stdout.log
+RUN /builds/scripts/boost_1_63_0.sh # >> /apps/build_stdout.log
 RUN rm -rf /builds && mkdir /builds
 
 ADD scripts/curl-7.52.1.sh /builds/scripts/curl-7.52.1.sh
