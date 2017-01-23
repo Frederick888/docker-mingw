@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J -L https://sourceforge.net/projects/boost/files/boost/1.63.0/boost_1_63_0.tar.gz/download
 tar xf boost_1_63_0.tar.gz

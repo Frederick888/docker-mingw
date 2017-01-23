@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
 tar xf bzip2-1.0.6.tar.gz

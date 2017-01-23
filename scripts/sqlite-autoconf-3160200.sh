@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J https://sqlite.org/2017/sqlite-autoconf-3160200.tar.gz
 tar xf sqlite-autoconf-3160200.tar.gz

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -L -J http://gnuwin32.sourceforge.net/downlinks/libgw32c-src-zip.php
 unzip $(ls libgw32c*.zip) -d libgw32c

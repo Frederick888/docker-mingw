@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -L -J https://sourceforge.net/projects/mingw/files/MinGW/Extension/catgets/mingw-catgets-1.0.1/mingw-catgets-1.0.1-src.tar.gz/download
 tar xf mingw-catgets-1.0.1-src.tar.gz

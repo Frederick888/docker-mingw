@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J https://www.libssh2.org/download/libssh2-1.8.0.tar.gz
 tar xf libssh2-1.8.0.tar.gz

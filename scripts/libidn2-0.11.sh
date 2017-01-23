@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # 0.11 is the latest compilable version
 cd /builds
 curl -O -J https://alpha.gnu.org/gnu/libidn/libidn2-0.11.tar.gz

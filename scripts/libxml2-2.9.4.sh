@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J ftp://xmlsoft.org/libxml2/libxml2-2.9.4.tar.gz
 tar xf libxml2-2.9.4.tar.gz
