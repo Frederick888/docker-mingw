@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz
 tar xf libiconv-1.14.tar.gz

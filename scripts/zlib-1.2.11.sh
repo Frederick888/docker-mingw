@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J http://www.zlib.net/zlib-1.2.11.tar.gz
 tar xf zlib-1.2.11.tar.gz

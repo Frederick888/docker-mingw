@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J https://alpha.gnu.org/gnu/libidn/libstringprep-0.0.8.tar.gz
 tar xf libstringprep-0.0.8.tar.gz

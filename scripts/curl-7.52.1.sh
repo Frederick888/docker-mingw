@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 # to be improved
 cd /builds
 curl -O -J https://curl.haxx.se/download/curl-7.52.1.tar.gz

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J -L https://github.com/libgit2/libgit2/archive/v0.25.1.tar.gz
 tar xf libgit2-0.25.1.tar.gz

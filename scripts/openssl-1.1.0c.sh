@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J https://www.openssl.org/source/openssl-1.1.0c.tar.gz
 tar xf openssl-1.1.0c.tar.gz

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J https://alpha.gnu.org/gnu/libidn/libidn-1.17.tar.gz
 tar xf libidn-1.17.tar.gz

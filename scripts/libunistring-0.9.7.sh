@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 cd /builds
 curl -O -J http://ftp.gnu.org/gnu/libunistring/libunistring-0.9.7.tar.xz
 tar xf libunistring-0.9.7.tar.xz
