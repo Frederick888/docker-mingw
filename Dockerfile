@@ -120,6 +120,17 @@ RUN autoreconf -vfi
 RUN LIBS="-lz" LDFLAGS="-L/usr/x86_64-w64-mingw32/lib" ./configure --without-python --host=x86_64-w64-mingw32 --prefix=/usr/x86_64-w64-mingw32
 RUN make && make install
 
+# LIBGIT2
+WORKDIR /builds
+RUN curl -O -J -L https://github.com/libgit2/libgit2/archive/v0.25.1.tar.gz
+RUN tar xf libgit2-0.25.1.tar.gz
+RUN mkdir -p /builds/libgit2-0.25.1/build
+WORKDIR /builds/libgit2-0.25.1/build
+RUN cmake .. -DCMAKE_SYSTEM_NAME=Windows -DCMAKE_C_COMPILER=x86_64-w64-mingw32-gcc -DCMAKE_RC_COMPILER=x86_64-w64-mingw32-windres \
+        -DCMAKE_FIND_ROOT_PATH=/usr/x86_64-w64-mingw32 -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
+        -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DDLLTOOL=/usr/bin/x86_64-w64-mingw32-dlltool -DCMAKE_INSTALL_PREFIX=/usr/x86_64-w64-mingw32
+RUN make && make install
+
 # CURL
 # to be improved
 WORKDIR /builds
