@@ -4,5 +4,5 @@ services:
   - docker
 
 script:
-  - docker build -t frederickzh/mingw:rust-nightly .
-  - docker run -it frederickzh/mingw:rust-nightly "/apps/rust-test.sh"
+  - docker build -t frederickzh/mingw:rust-stable .
+  - docker run -it frederickzh/mingw:rust-stable "/apps/rust-test.sh"
