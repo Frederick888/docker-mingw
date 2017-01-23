@@ -6,6 +6,7 @@ RUN apt-get -qq -y install autoconf build-essential pkg-config cmake libtool min
 RUN apt-get -qq -y install curl unzip python wget
 
 RUN mkdir /builds
+RUN mkdir /apps
 
 #ADD scripts/libgw32c-0.4.sh /builds/scripts/libgw32c-0.4.sh
 #RUN /builds/scripts/libgw32c-0.4.sh >> /apps/build_stdout.log
