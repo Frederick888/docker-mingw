@@ -33,4 +33,4 @@ cd /builds/curl-7.52.1
         --enable-ipv6 \
         --enable-sspi \
         --enable-cookies
-make && make install
+make -j$(nproc) && make install

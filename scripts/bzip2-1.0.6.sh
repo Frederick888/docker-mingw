@@ -12,4 +12,4 @@ patch bzlib.h < /builds/patches/bzip2/bzip2-use-cdecl-calling-convention.patch
 patch bzip2.c < /builds/patches/bzip2/mingw32-bzip2-1.0.5-slash.patch
 sh autogen.sh
 ./configure --host=x86_64-w64-mingw32 --prefix=/usr/x86_64-w64-mingw32
-make && make install
+make -j$(nproc) && make install

@@ -11,4 +11,4 @@ patch -Np1 -i /builds/patches/libxml2/libxml2-no-test.patch
 sed -i "s| doc example | |g" Makefile.am
 autoreconf -vfi
 LIBS="-lz" LDFLAGS="-L/usr/x86_64-w64-mingw32/lib" ./configure --without-python --host=x86_64-w64-mingw32 --prefix=/usr/x86_64-w64-mingw32
-make && make install
+make -j$(nproc) && make install
