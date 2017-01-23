@@ -88,3 +88,5 @@ RUN rustup target add x86_64-pc-windows-gnu
 
 WORKDIR /apps
 RUN rm -rf /builds
+
+ADD rust-test.sh /apps/rust-test.sh
