@@ -131,6 +131,23 @@ RUN cmake .. -DCMAKE_SYSTEM_NAME=Windows -DCMAKE_C_COMPILER=x86_64-w64-mingw32-g
         -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DDLLTOOL=/usr/bin/x86_64-w64-mingw32-dlltool -DCMAKE_INSTALL_PREFIX=/usr/x86_64-w64-mingw32
 RUN make && make install
 
+# BOOST
+WORKDIR /builds
+RUN curl -O -J -L https://sourceforge.net/projects/boost/files/boost/1.63.0/boost_1_63_0.tar.gz/download
+RUN tar xf boost_1_63_0.tar.gz
+WORKDIR /builds/boost_1_63_0
+RUN patch -Np0 -i /apps/patches/boost/boost-mingw.patch
+WORKDIR /builds/boost_1_63_0/libs/serialization
+RUN patch -p1 -i /apps/patches/boost/42.patch
+WORKDIR /builds/boost_1_63_0
+RUN cp /apps/patches/boost/user-config.jam ./
+RUN ./bootstrap.sh --with-toolset=gcc --with-python=/usr/bin/python2
+RUN ./b2 -d+2 -q target-os=windows variant=release threading=multi threadapi=win32 link=shared,static \
+        runtime-link=shared --prefix=/usr/x86_64-w64-mingw32 --user-config=user-config.jam --without-python \
+        --without-mpi --without-graph_parallel \
+        cxxflags="-std=c++11 -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
+        address-model=64 architecture=x86 binary-format=pe --layout=tagged install
+
 # CURL
 # to be improved
 WORKDIR /builds

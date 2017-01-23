@@ -1,0 +1,5 @@
+using gcc : mingw64 : x86_64-w64-mingw32-g++
+        :
+        <rc>x86_64-w64-mingw32-windres
+        <archiver>x86_64-w64-mingw32-ar
+;
