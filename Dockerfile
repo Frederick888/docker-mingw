@@ -45,6 +45,19 @@ RUN CROSS_COMPILE="x86_64-w64-mingw32-" ./Configure -DHAVE_STRUCT_TIMESPEC -lz -
 RUN make depend
 RUN make && make install
 
+# BZIP2
+WORKDIR /builds
+RUN curl -O -J http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
+RUN tar xf bzip2-1.0.6.tar.gz
+WORKDIR /builds/bzip2-1.0.6
+RUN rm -f autogen.sh README.autotools configure.ac Makefile.am bzip2.pc.in
+RUN patch -p1 -i "$srcdir/"bzip2-1.0.5-autoconfiscated.patch
+RUN patch bzlib.h < "$srcdir/"bzip2-use-cdecl-calling-convention.patch
+RUN patch bzip2.c < "$srcdir/"mingw32-bzip2-1.0.5-slash.patch
+RUN sh autogen.sh
+RUN ./configure --host=x86_64-w64-mingw32 --prefix=/usr/x86_64-w64-mingw32
+RUN make && make install
+
 # SQLITE3
 WORKDIR /builds
 RUN curl -O -J https://sqlite.org/2017/sqlite-autoconf-3160200.tar.gz
