@@ -48,3 +48,6 @@ RUN chmod +x rust-init
 RUN ./rust-init -y --default-toolchain nightly
 RUN ln -s $HOME/.cargo/bin/* /usr/local/bin/
 RUN rustup target add x86_64-pc-windows-gnu
+
+WORKDIR /apps
+RUN rm -rf /builds
