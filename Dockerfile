@@ -142,7 +142,7 @@ RUN patch -p1 -i /apps/patches/boost/42.patch
 WORKDIR /builds/boost_1_63_0
 RUN cp /apps/patches/boost/user-config.jam ./
 RUN ./bootstrap.sh --with-toolset=gcc --with-python=/usr/bin/python2
-RUN ./b2 -d+2 -q target-os=windows variant=release threading=multi threadapi=win32 link=shared,static \
+RUN ./b2 -d+2 -q target-os=windows variant=release threading=multi threadapi=win32 link=static \
         runtime-link=shared --prefix=/usr/x86_64-w64-mingw32 --user-config=user-config.jam --without-python \
         --without-mpi --without-graph_parallel \
         cxxflags="-std=c++11 -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4" \
