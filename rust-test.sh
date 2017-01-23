@@ -2,13 +2,7 @@
 
 set -e
 
-apt-get -y install curl vim git libssh2-1-dev libssl-dev
-
-apt-get -y install apt-transport-https ca-certificates software-properties-common
-curl -fsSL https://yum.dockerproject.org/gpg | apt-key add -
-add-apt-repository -y "deb https://apt.dockerproject.org/repo/ debian-$(lsb_release -cs) main"
-apt-get update
-apt-get -y install docker-engine
+apt-get -qq -y install curl vim git libssh2-1-dev libssl-dev
 
 echo "### INSTALLING cargo-clone ###"
 cargo install cargo-clone
@@ -32,6 +26,12 @@ rust_test_template libz-sys
 
 # LIBSSH2-SYS
 rust_test_template libssh2-sys
+
+# LIBXML
+rust_test_template libxml 'CFLAGS=-I/usr/x86_64-w64-mingw32/include/libxml2 LDFLAGS=-L/usr/x86_64-w64-mingw32/lib'
+
+# LIBGIT2
+rust_test_template libgit2-sys
 
 # CURL-SYS
 rust_test_template curl-sys
