@@ -27,6 +27,12 @@ rust_test_template libz-sys
 # LIBSSH2-SYS
 rust_test_template libssh2-sys
 
+# LIBXML
+rust_test_template libxml 'CFLAGS=-I/usr/x86_64-w64-mingw32/include/libxml2 LDFLAGS=-L/usr/x86_64-w64-mingw32/lib'
+
+# LIBGIT2
+rust_test_template libgit2-sys
+
 # CURL-SYS
 rust_test_template curl-sys
 
