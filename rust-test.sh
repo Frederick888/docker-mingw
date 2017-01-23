@@ -36,3 +36,8 @@ rust_test_template libgit2-sys
 # CURL-SYS
 rust_test_template curl-sys
 
+# LIBSQLITE3-SYS
+rust_test_template libsqlite3-sys
+
+# BZIP2-SYS
+rust_test_template bzip2-sys
