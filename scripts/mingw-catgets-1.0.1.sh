@@ -8,4 +8,4 @@ tar xf mingw-catgets-1.0.1-src.tar.gz
 cd /builds/mingw-catgets-1.0.1
 patch catopen.c /builds/patches/mingw-catgets-catopen-20170123.diff
 ./configure --host=x86_64-w64-mingw32 --prefix=/usr/x86_64-w64-mingw32
-make && make install
+make -j$(nproc) && make install
