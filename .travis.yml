@@ -6,5 +6,6 @@ services:
   - docker
 
 script:
+  - docker pull frederickzh/mingw:rust-nightly
   - docker build -t frederickzh/mingw:rust-nightly .
   - docker run -it frederickzh/mingw:rust-nightly "/apps/rust-test.sh"
