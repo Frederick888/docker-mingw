@@ -91,3 +91,4 @@ WORKDIR /apps
 RUN rm -rf /builds
 
 ADD rust-test.sh /apps/rust-test.sh
+ADD cargo_config /.cargo/config
