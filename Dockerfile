@@ -23,8 +23,8 @@ RUN rm -rf /builds && mkdir /builds
 
 #ADD scripts/openssl-1.1.0c.sh /builds/scripts/openssl-1.1.0c.sh
 #RUN /builds/scripts/openssl-1.1.0c.sh >> /apps/build_stdout.log
-ADD scripts/openssl-1.0.2j.sh /builds/scripts/openssl-1.0.2j.sh
-RUN /builds/scripts/openssl-1.0.2j.sh >> /apps/build_stdout.log
+ADD scripts/openssl-1.0.2k.sh /builds/scripts/openssl-1.0.2k.sh
+RUN /builds/scripts/openssl-1.0.2k.sh >> /apps/build_stdout.log
 RUN rm -rf /builds && mkdir /builds
 
 ADD patches/bzip2 /builds/patches/bzip2
